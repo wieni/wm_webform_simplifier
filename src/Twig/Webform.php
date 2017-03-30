@@ -37,7 +37,11 @@ class Webform extends \Twig_Extension {
     }
 
     /**
-     * The php function to load a given webform
+     * The php function to load a given webform and render out to twig.
+     *
+     * @param $webform
+     *
+     * @return array|string
      */
     public function webform($webform)
     {

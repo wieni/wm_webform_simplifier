@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Remove certain parts to ensure a client or less advanced user messes up the site.
+ * @param $form
+ * @param $form_state
+ */
 function wm_webform_simplifier_form_webform_settings_form_alter(&$form, &$form_state)
 {
     $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
@@ -15,6 +20,11 @@ function wm_webform_simplifier_form_webform_settings_form_alter(&$form, &$form_s
 
 }
 
+/**
+ * Remove certain parts to ensure a client or less advanced user messes up the site.
+ * @param $form
+ * @param $form_state
+ */
 function wm_webform_simplifier_form_webform_access_form_alter(&$form, &$form_state)
 {
     $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
@@ -24,10 +34,14 @@ function wm_webform_simplifier_form_webform_access_form_alter(&$form, &$form_sta
     }
 }
 
+/**
+ * Remove certain parts to ensure a client or less advanced user messes up the site.
+ * @param $form
+ * @param $form_state
+ */
 function wm_webform_simplifier_form_webform_ui_element_form_alter(&$form, &$form_state)
 {
     $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
-
     if (!$account) {
         $form['properties']['access']['#access'] = false;
         $form['properties']['element_attributes']['#access'] = false;

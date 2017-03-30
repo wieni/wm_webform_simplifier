@@ -2,7 +2,6 @@
 
 namespace Drupal\wm_webform_simplifier\Routing;
 
-use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use Drupal\Core\Routing\RoutingEvents;
 use Drupal\Core\Routing\RouteSubscriberBase;
