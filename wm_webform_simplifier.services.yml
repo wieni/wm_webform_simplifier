@@ -1,0 +1,9 @@
+services:
+    wm_webform_simplifier.twig.webform:
+        class: Drupal\wm_webform_simplifier\Twig\Webform
+        tags:
+            - { name: twig.extension }
+
+    wm_webform_simplifier.routing.core:
+        class:  Drupal\wm_webform_simplifier\Routing\CoreRoutes
+        tags: [{ name: event_subscriber }]

@@ -1,0 +1,4 @@
+use advanced webform configuration:
+  title: 'use advacned webform configuration'
+  description: 'Give this permission to people who should see the dangerous/advanced webform configuration'
+  restrict access: true

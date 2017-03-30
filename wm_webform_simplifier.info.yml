@@ -1,0 +1,7 @@
+name: wm_webform_simplifier
+type: module
+description: Wieni Module Web Form Simplifier
+core: 8.x
+package: Wieni
+dependencies:
+ - webform

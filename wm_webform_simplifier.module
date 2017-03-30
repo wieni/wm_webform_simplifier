@@ -1,0 +1,40 @@
+<?php
+
+function wm_webform_simplifier_form_webform_settings_form_alter(&$form, &$form_state)
+{
+    $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
+    if (!$account) {
+        $form['attributes']['#access'] = false;
+        $form['page']['#access'] = false;
+        $form['form']['form_submit']['form_submit_attributes']['#access'] = false;
+        $form['preview']['settings']['preview_next_button']['preview_next_button_attributes']['#access'] = false;
+        $form['preview']['settings']['preview_prev_button']['preview_prev_button_attributes']['#access'] = false;
+        $form['wizard']['wizard_next_button']['wizard_next_button_attributes']['#access'] = false;
+        $form['wizard']['wizard_prev_button']['wizard_prev_button_attributes']['#access'] = false;
+    }
+
+}
+
+function wm_webform_simplifier_form_webform_access_form_alter(&$form, &$form_state)
+{
+    $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
+    if (!$account) {
+        $form['access']['#access'] = false;
+        $form['actions']['submit']['#access'] = false;
+    }
+}
+
+function wm_webform_simplifier_form_webform_ui_element_form_alter(&$form, &$form_state)
+{
+    $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
+
+    if (!$account) {
+        $form['properties']['access']['#access'] = false;
+        $form['properties']['element_attributes']['#access'] = false;
+        $form['properties']['wrapper_attributes']['#access'] = false;
+        $form['properties']['access_create']['#access'] = false;
+        $form['properties']['access_update']['#access'] = false;
+        $form['properties']['access_view']['#access'] = false;
+    }
+
+}
