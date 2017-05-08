@@ -90,7 +90,6 @@ function wm_webform_simplifier_form_webform_access_form_alter(&$form, &$form_sta
  */
 function wm_webform_simplifier_form_webform_ui_element_form_alter(&$form, &$form_state)
 {
-    dpm(array_keys($form['properties']));
     $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
     if (!$account) {
         $form['properties']['access']['#access'] = false;
