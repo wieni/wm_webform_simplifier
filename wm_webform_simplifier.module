@@ -1,5 +1,54 @@
 <?php
 
+
+/**
+ * @param $data
+ * @param $route_name
+ */
+function wm_webform_simplifier_menu_local_tasks_alter(&$data, $route_name)
+{
+
+    // Disable a bunch of local tasks to ensure the survival of the human race.
+    $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
+    if (!$account) {
+        if (isset($data['tabs'][0]['webform.settings'])) {
+            $data['tabs'][0]['webform.settings']['#access'] = false;
+        }
+        if (isset($data['tabs'][0]['webform.addons'])) {
+            $data['tabs'][0]['webform.addons']['#access'] = false;
+        }
+        if (isset($data['tabs'][1]['entity.webform.edit_form_settings'])) {
+            $data['tabs'][1]['entity.webform.edit_form_settings']['#access'] = false;
+        }
+        if (isset($data['tabs'][1]['entity.webform.edit_form_access'])) {
+            $data['tabs'][1]['entity.webform.edit_form_access']['#access'] = false;
+        }
+        if (isset($data['tabs'][1]['entity.webform.edit_form_assets'])) {
+            $data['tabs'][1]['entity.webform.edit_form_assets']['#access'] = false;
+        }
+        if (isset($data['tabs'][1]['entity.webform.edit_form_handlers'])) {
+            $data['tabs'][1]['entity.webform.edit_form_handlers']['#access'] = false;
+        }
+        //'entity.webform.edit_form_third_party_settings'
+        if (isset($data['tabs'][1]['entity.webform.edit_form_third_party_settings'])) {
+            $data['tabs'][1]['entity.webform.edit_form_third_party_settings']['#access'] = false;
+        }
+    }
+}
+
+/**
+ * @param $form
+ * @param $form_state
+ */
+function wm_webform_simplifier_form_webform_form_alter(&$form, &$form_state)
+{
+    // Don't show the category stuff.
+    $account = \Drupal::currentUser()->hasPermission('use advanced webform configuration');
+    if (!$account) {
+        $form['category']['#access'] = false;
+    }
+}
+
 /**
  * Remove certain parts to ensure a client or less advanced user messes up the site.
  * @param $form
